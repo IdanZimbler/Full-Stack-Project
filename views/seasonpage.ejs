@@ -1,0 +1,28 @@
+<%- include("header") -%>
+
+<section class="banner center first-cover" id="top" ">
+  <div class="container ">
+    <div class=" row ">
+      <div class=" col-md-4">
+    <img class="card-image" src="<%=posterPath%>" alt="Season Poster">
+  </div>
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-text">
+        <h1><a href="/TVShows/<%=name%>"><%=name%></a></h1>
+        <h2><%=seasonName%></h2>
+      </div>
+      <div class="dropdown center">
+        <button class="dropbtn  center">Episodes</button>
+        <div class="dropdown-content ">
+          <%  for (var i = 0; i < numOfEpisodes; i++) {%>
+          <a class = "onclick-effect" href="/TVShows/<%=name%>/<%=seasonNumber%>/<%=i+1%>">Episode <%=i+1%></a>
+          <%} %>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</section>
+<%- include("footer") -%>

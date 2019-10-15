@@ -1,0 +1,232 @@
+
+body {
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+
+.col-md-8{
+  margin-top:70px;
+}
+
+.col-md-8 .card {
+  background-color: #020f1d73;
+  grid-template-columns: 300px;
+  grid-template-rows: 210px 210px 80px;
+  grid-template-areas: "image" "text" "stats";
+
+  border-radius: 60px;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+  font-family: roboto;
+  text-align: center;
+
+  transition: 0.5s ease;
+  cursor: pointer;
+  margin: 0 auto;
+  height:500px;
+}
+
+.my-btn{
+  width:70%;
+  background-color: #071b3073;
+  border-radius: 100px;
+  border-bottom: 2px solid #213868;
+  border-top: none;
+}
+.card-image {
+  grid-area: image;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-size: cover;
+  filter: brightness(50%);
+  height:600px;
+  width:auto;
+  margin-top:30px;
+}
+
+@media screen and (max-width: 772px) {
+    .card-image {
+         height: 300px;
+         width:auto;
+    }
+    .col-md-8 .card{
+      height:250px;
+    }
+    .container .row{
+      display: block;
+    }
+}
+
+.card-text h1{
+  border-bottom: 2px solid #213868;
+  font-weight: 900;
+}
+
+h1 a{
+  color:white;
+}
+
+.card-text {
+  grid-area: text;
+  margin: 60px 30px 10px 30px;
+  color:white;
+}
+.card-text .date {
+  color: rgb(255, 7, 110);
+  font-size:13px;
+}
+.card-text p {
+  color: white;
+  font-size:15px;
+  font-weight: 300;
+  margin:30px;
+  letter-spacing: 0.5px;
+}
+.card-text h2 {
+  margin-top:30px;
+  font-size:28px;
+}
+.card-stats {
+  grid-area: stats;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background: black;
+  position:absolute;
+  bottom: 0px;
+  width: 100%;
+}
+.card-stats .stat {
+  padding:10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+}
+.card-stats .border {
+  border-left: 1px solid rgb(172, 26, 87);
+  border-right: 1px solid rgb(172, 26, 87);
+}
+.card-stats .value{
+  font-size:22px;
+  font-weight: 500;
+}
+.card-stats .value sup{
+  font-size:12px;
+}
+.card-stats .type{
+  font-size:11px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.card:hover {
+  transform: scale(1.15);
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+}
+
+.card .my-btn:hover{
+  background:#213868;
+  opacity:0.7;
+}
+
+.dropdown-item{
+  color:white;
+}
+
+/* Style The Dropdown Button */
+.dropbtn {
+  width: 50%;
+  color:white;
+  background-color: #071b3073;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 100px;
+  border-bottom: 5px solid #213868;
+}
+
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+  width: 45%;
+    border-radius: 100px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  overflow:auto;
+  display: none;
+
+  min-width: 160px;
+  color:white;
+  z-index: 1;
+
+  columns: 2;
+  height: -webkit-fill-available;
+}
+
+.onclick-effect{
+  position: relative;
+  transition-duration: 0.1s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.onclick-effect:after {
+  content: "";
+  background: white;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px!important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.onclick-effect:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color:white;
+  padding: 2px 2px;
+  text-decoration: none;
+  display: block;
+  border-radius:50px;
+
+  border-bottom: 1px solid #213868;
+
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #001a33;
+  border-bottom: 1px solid white;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #213868;
+  border-bottom: 5px solid white;
+}

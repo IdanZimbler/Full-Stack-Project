@@ -1,0 +1,91 @@
+<%- include("header") -%>
+
+
+<section class="banner center first-cover" id="top">
+  <div class="container">
+    <div class="row ">
+      <div class="col-md-12 col-md-offset-1 ">
+        <div class="banner-caption">
+          <div class="dark-background bold-text white-text">
+            <div class="line-dec"></div>
+            <h2>Forgot which episode are you at?</h2>
+            <h3>Enter TV Show name and we will remind you!</h3>
+          </div>
+        </div>
+        <div class="submit-form dark-background-search">
+          <form autocomplete="off" id="form-submit" action="" method="get">
+            <div class="row">
+              <div class="col-md-12 first-item">
+                <fieldset class="autocomplete">
+                  <input name="name" type="text" class="form-control large-text" id="myInput" placeholder="Tv Show Name" required="" autofocus>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="popular-section">
+  <section class="banner gallery-block compact-gallery popular-cover">
+    <div class="container">
+      <div id="popular" class="heading">
+        <h2>Most Popular TV Shows</h2>
+      </div>
+      <div class="row ">
+        <%mostPopular.forEach(tvshow=>{%>
+        <div class="col-xs-4 col-sm-3 col-md-2 col-lg-1 item zoom-on-hover">
+          <a href="/TVShows/<%=tvshow.name%>">
+            <img class="img-fluid image lozad" data-src="<%=tvshow.posterPath%>">
+            <span class="description">
+              <span class="description-heading"><%=tvshow.name%></span>
+            </span>
+          </a>
+        </div>
+        <%})%>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="our-services center" id="project">
+  <div class="container ourservices-container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-heading">
+          <h2>My Project</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="service-item">
+          <i class="fa fa-database fa-3x"></i>
+          <h4>DataBase</h4>
+          <p>More than 10,000 TV Shows,<br /> 50,000 Seasons, 500,000 Episodes, 1,000,000 Images For Episodes.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-item">
+          <i class="fa fa-check-circle fa-3x"></i>
+          <h4>Reliable Information</h4>
+          <p>Accurate data for every TV-show including episode summary, images and guest stars. </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-item">
+          <i class="fa fa-magic fa-3x"></i>
+          <h4>Fast & Easy To Use</h4>
+          <p>Save precious time and find in few clicks whether you have seen this episode or not.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="../js/autocomplete.js" charset="UTF-8"></script>
+
+
+<%- include("footer") -%>
