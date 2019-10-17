@@ -1,7 +1,14 @@
 .first-cover {
   background-image: url(../img/image.jpg);
   background-size: cover;
-  padding-bottom: 330px;
+  padding-bottom: 700px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.second-cover {
+  background-image: url(../img/image.jpg);
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -12,7 +19,6 @@ body{
 
 
 li {
-  margin: 10px;
   display: inline-block;
   font-size: large;
 }
@@ -140,27 +146,11 @@ section {
 }
 
 .line-dec {
-  width: 70px;
+  width: 50px;
   height: 6px;
   background-color: #213868;
   left: 50%;
-  margin-left: -50px;
-  margin-right: -50px;
-  border-radius: 100px;
-  margin-bottom: 100px;
-  margin-top: 100px;
-}
-
-.banner .banner-caption .line-dec {
-  width: 70px;
-  height: 6px;
-  background-color: #213868;
-  position: absolute;
-  left: 50%;
-  margin-top: -50px;
-  margin-left: -50px;
-  margin-right: -50px;
-  border-radius: 100px;
+  border-radius: 200px;
 }
 
 #myInput {
@@ -282,4 +272,151 @@ section.our-services .service-item h4 {
 .popular-cover .container{
   padding-top: 200px;
   padding-bottom: 200px;
+}
+
+footer {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  padding: 80px 0px 70px 0px;
+  border-top: 1px solid #ddd;
+  font-family:'Raleway', 'sans-serif';
+}
+
+footer .footer-heading h4 {
+  font-size: 21px;
+  color: #232323;
+  letter-spacing: 0.5px;
+  margin-top: 15px;
+  margin-bottom: 40px;
+}
+
+.contact-info ul{
+  padding:0;
+}
+
+
+footer .about-veno .logo {
+  margin-bottom: 40px;
+  display:flex;
+}
+
+footer .about-veno ul li a {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  text-align: center;
+  line-height: 32px;
+  background-color: #cdcdcd;
+  border-radius: 50%;
+  font-size: 15px;
+  color: #fff;
+  margin-right: 3px;
+  transition: all 0.5s;
+}
+
+footer .about-veno p {
+  margin-bottom: 25px;
+}
+
+footer .about-veno ul li a:hover {
+  background-color: #4883ff;
+}
+
+footer .useful-links ul li {
+  padding: 0;
+display: grid;
+}
+
+footer .useful-links ul {
+  padding: 0;
+display: grid;
+}
+
+footer .useful-links ul li a {
+  font-size: 15px;
+  color: #7a7a7a;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: all 0.5s;
+}
+
+footer .useful-links ul li a:hover {
+  color: #4883ff;
+}
+
+footer .useful-links ul li i {
+  color: #4883ff;
+  font-size: 6px;
+  position: relative;
+  top: -3px;
+  margin-right: 8px;
+}
+
+footer .contact-info p {
+  margin-bottom: 25px;
+}
+
+
+
+footer .contact-info ul li span {
+  font-size: 13px;
+  color: #7a7a7a;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  width: 80px;
+  display: inline-block;
+}
+
+footer .contact-info ul span {
+  font-size: 13px;
+  color: #7a7a7a;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  width: 150px;
+  display: inline-block;
+}
+
+footer .contact-info ul li {
+  font-size: 15px;
+  color: #4883ff;
+  letter-spacing: 0.5px;
+}
+
+.sub-footer p {
+  font-family: 'Raleway', 'sans-serif';
+  text-align: center;
+  display: inline-block;
+  background-color: #030717e0;
+  width: 100%;
+  margin-bottom: 0px;
+  padding: 30px 0px;
+  font-size: 15px;
+  color: white;
+}
+
+.sub-footer a {
+  text-decoration: none;
+  color: #4883ff;
+}
+
+.logo {
+  text-align: center;
+    vertical-align: middle;
+    font-family: 'Sofia', cursive;
+    display:inline;
+}
+
+.logo img{
+  border-radius: 100px 0;
+}
+
+h4 span{
+  text-align: center;
+    vertical-align: middle;
+    font-size: 15px;
+    display: inline;
+}
+
+.row .col-md-6{
+  padding:0;
 }

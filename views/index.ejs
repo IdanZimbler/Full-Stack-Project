@@ -7,7 +7,7 @@
       <div class="col-md-12 col-md-offset-1 ">
         <div class="banner-caption">
           <div class="dark-background bold-text white-text">
-            <div class="line-dec"></div>
+            <div class="line-dec center"></div>
             <h2>Forgot which episode are you at?</h2>
             <h3>Enter TV Show name and we will remind you!</h3>
           </div>
@@ -28,27 +28,29 @@
   </div>
 </section>
 
-<div class="popular-section">
-  <section class="banner gallery-block compact-gallery popular-cover">
-    <div class="container">
-      <div id="popular" class="heading">
-        <h2>Most Popular TV Shows</h2>
-      </div>
-      <div class="row ">
-        <%mostPopular.forEach(tvshow=>{%>
-        <div class="col-xs-4 col-sm-3 col-md-2 col-lg-1 item zoom-on-hover">
-          <a href="/TVShows/<%=tvshow.name%>">
-            <img class="img-fluid image lozad" data-src="<%=tvshow.posterPath%>">
-            <span class="description">
-              <span class="description-heading"><%=tvshow.name%></span>
-            </span>
-          </a>
+<section class="banner center second-cover ">
+  <div class="carousel-wrapper">
+    <div class="line-dec center" style="margin-top:30px;"></div>
+    <h2 id="popular">Most Popular TV Shows</h2>
+    <div class="carousel" data-flickity='{ "initialIndex": <%=randomNum%> }'>
+      <%mostPopular.forEach(tvshow=>{%>
+      <div class="carousel-cell">
+        <h3><a href="/TVShows/<%=tvshow.name%>"><%=tvshow.name%></a></h3>
+        <a class="more" href="/TVShows/<%=tvshow.name%>">Click To Open</a>
+        <a href="/TVShows/<%=tvshow.name%>">
+          <img src="<%=tvshow.posterPath%>" />
+        </a>
+        <div class="line"></div>
+        <div class="price">
+          <span><%=tvshow.voteAvg%><i class="fa fa-star" aria-hidden="true"></i></span>
         </div>
-        <%})%>
       </div>
+      <%})%>
     </div>
-  </section>
-</div>
+  </div>
+</section>
+
+
 
 <section class="our-services center" id="project">
   <div class="container ourservices-container">
@@ -85,7 +87,94 @@
   </div>
 </section>
 
+<link rel="stylesheet" href="https://unpkg.com/flickity@2.0/dist/flickity.min.css">
+<script src="https://unpkg.com/flickity@2.0/dist/flickity.pkgd.min.js"></script>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="about-veno">
+          <div class="logo">
+            <img src="/img/logo6.png" alt="Zimbler Logo" style="margin-right:10px;">
+            <h4>Find My Episode <br /><span style="">by Idan Zimbler ©</span></h4>
+          </div>
+          <ul class="social-icons">
+            <li>
+              <a href="https://www.facebook.com/idanqwe#_"><i class="fa fa-facebook"></i></a>
+              <a href="https://www.linkedin.com/in/idan-zimbler-29a0a2112"><i class="fa fa-linkedin"></i></a>
+              <a href="https://github.com/idanqwe"><i class="fa fa-github"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="useful-links">
+          <div class="footer-heading">
+            <h4>Useful Links</h4>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <ul>
+                <li><a href="https://www.imdb.com"><i class="fa fa-stop"></i>IMDB</a></li>
+                <li><a href="https://www.themoviedb.org"><i class="fa fa-stop"></i>TMDB</a></li>
+                <li><a href="https://www.netflix.com"><i class="fa fa-stop"></i>Netflix</a></li>
+                <li><a href="https://www.rottentomatoes.com/top-tv/"><i class="fa fa-stop"></i>Rottentomatoes</a></li>
+                <li><a href="https://www.vulture.com"><i class="fa fa-stop"></i>Vulture</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul>
+                <li><a href="https://www.tvguide.com"><i class="fa fa-stop"></i>TV Guide</a></li>
+                <li><a href="https://www.nytimes.com"><i class="fa fa-stop"></i>NYTimes</a></li>
+                <li><a href="https://www.pastemagazine.com"><i class="fa fa-stop"></i>Pastemagazine</a></li>
+                <li><a href="https://www.thrillist.com"><i class="fa fa-stop"></i>Thrillist</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="contact-info">
+          <div id="contact" class="footer-heading">
+            <h4>Contact Information</h4>
+          </div>
+          <ul onclick="copyDivToClipboard()" style="cursor:copy">
+            <span>Email: (click to copy)</span>
+            <div id="a">
+              <li>idanqwe@gmail.com</li>
+            </div>
+            <div style="display:none;" class="fadeDiv">
+              <li style="color:green;">Copied email to clipboard!</li>
+            </div>
+            <span>Address:</span>
+            <div ">
+              <li>Beer Yaakov,Israel</li>
+            </div>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
 <script src="../js/autocomplete.js" charset="UTF-8"></script>
+<script>
+  function copyDivToClipboard() {
+    var range = document.createRange();
+    range.selectNode(document.getElementById("a"));
+    window.getSelection().removeAllRanges(); // clear current selection
+    window.getSelection().addRange(range); // to select text
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges(); // to deselect
+    $('.fadeDiv').fadeIn(function(){
+       $('.fadeDiv').delay(1500).fadeOut();
+    });
+  }
+
+  //When the page has loaded.
+
+</script>
 
 
 <%- include("footer") -%>

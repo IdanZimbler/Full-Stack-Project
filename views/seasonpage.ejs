@@ -20,6 +20,18 @@
           <%} %>
         </div>
       </div>
+      <div class = "navigation-btn">
+        <%if(seasonNumber+1 <= numOfSeasons){%>
+        <a class="onclick-effect to-right" href="/TVShows/<%=name%>/<%=seasonNumber+1%>">
+          Season <%=seasonNumber+1%> <i class="arrow right"></i>
+        </a>
+        <%}%>
+        <%if(seasonNumber-1 > 0){%>
+        <a class="onclick-effect to-left" href="/TVShows/<%=name%>/<%=seasonNumber-1%>">
+          <i class="arrow left"></i> Season <%=seasonNumber-1%>
+        </a>
+        <%}%>
+      </div>
     </div>
   </div>
   </div>

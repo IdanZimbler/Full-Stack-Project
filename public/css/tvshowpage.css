@@ -182,6 +182,10 @@ h1 a{
   cursor: pointer;
 }
 
+.onclick-effect:active{
+  transform: scale(1.2);
+}
+
 .onclick-effect:after {
   content: "";
   background: white;
