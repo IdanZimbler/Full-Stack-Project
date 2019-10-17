@@ -359,7 +359,7 @@ app.get("/TVShows/:TVShowName/:seasonNumber/:episodeNumber", (req, res) => {
 
 
 
-
-app.listen(3000, function() {
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, function() {
   console.log("Server started Successfully");
 });
