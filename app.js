@@ -56,6 +56,7 @@ const itemsSchema = new mongoose.Schema({
 });
 
 const TVShow = mongoose.model('TVShow', itemsSchema, 'TVShows_en');
+const TVShowHE = mongoose.model('TVShow', itemsSchema, 'TVShows');
 
 
 app.get("/", function(req, res) {
@@ -245,7 +246,7 @@ app.get("/TVShows/:TVShowName", (req, res) => {
       var overview = foundTVShow.overview;
       var numOfSeasons = foundTVShow.seasons.length;
       res.render("tvshowpage", {
-        name: name,
+        name: encodeURI(name),
         posterPath: foundTVShow.posterPath,
         overview: foundTVShow.overview,
         numOfSeasons: foundTVShow.seasons.length
@@ -270,7 +271,7 @@ app.get("/TVShows/:TVShowName/:seasonNumber", (req, res) => {
       const posterPath = (season.posterPath.length <= 5) ? "/img/coming-soon.png" : "https://image.tmdb.org/t/p/w500" + season.posterPath;
       const numOfSeasons = foundTVShow.seasons.length-1;
       res.render("seasonpage", {
-        name: tvShowName,
+        name: encodeURI(tvShowName),
         posterPath: posterPath,
         seasonName: season.name,
         numOfEpisodes: season.episodes.length,
@@ -311,55 +312,74 @@ app.get("/TVShows/:TVShowName/:seasonNumber/:episodeNumber", (req, res) => {
   const seasonNumber = req.params.seasonNumber;
   let episodeNumber = req.params.episodeNumber - 1;
 
-  TVShow.findOne({
-      name: tvShowName
+  TVShowHE.findOne({
+      originalName: tvShowName
     })
     .then((foundTVShow) => {
+
       if (!foundTVShow) { //if page not exist in db
-        return res.status(404).send('Page not found');
+        return res.status(404).send('Page not found1');
       }
       const season = foundTVShow.seasons[seasonNumber];
       const episode = season.episodes[episodeNumber];
-      const episodeName = episode.name;
-      const posterPath = (episode.stillPath.length <= 5) ? "/img/coming-soon.png" : "https://image.tmdb.org/t/p/w500" + episode.stillPath;
-      const overview = (episode.overview.length <= 5) ? "No overview for this episode yet" : episode.overview;
-      const episodeImages = episode.episodeImages;
-      const guestStars = episode.guestStars;
-      const numOfEpisodes = season.episodeCount;
-      const fullEpisodeImages = [];
-      var firstTime = true;
-      episodeImages.forEach(function(image) {
-        if (!firstTime) {
-          fullEpisodeImages.push("https://image.tmdb.org/t/p/w500" + image);
-        } else {
-          firstTime = false;
-        }
-      });
-      guestStars.forEach(function(guest) {
-        guest.profilePath = (guest.profilePath.length <= 5) ? "" : "https://image.tmdb.org/t/p/w300" + guest.profilePath;
-      });
-      episodeNumber++;
-      res.render("episodePage", {
-        name: tvShowName,
-        episodeName: episodeName,
-        seasonNumber: seasonNumber,
-        episodeNumber: episodeNumber,
-        posterPath: posterPath,
-        airDate: episode.airDate,
-        overview: overview,
-        episodeImages: fullEpisodeImages,
-        guestStars: guestStars,
-        numOfEpisodes:numOfEpisodes
-      });
+      const overviewHE = (episode.overview.length <= 5) ? "עדיין אין סיכום בעברית לפרק זה" : episode.overview;
+      TVShow.findOne({
+          name: tvShowName
+        })
+        .then((foundTVShow) => {
+          if (!foundTVShow) { //if page not exist in db
+            return res.status(404).send('Page not found2');
+          }
+          const season = foundTVShow.seasons[seasonNumber];
+          const episode = season.episodes[episodeNumber];
+          const episodeName = episode.name;
+          const posterPath = (episode.stillPath.length <= 5) ? "/img/coming-soon.png" : "https://image.tmdb.org/t/p/w500" + episode.stillPath;
+          const overview = (episode.overview.length <= 5) ? "No overview for this episode yet" : episode.overview;
+          const episodeImages = episode.episodeImages;
+          const guestStars = episode.guestStars;
+          const numOfEpisodes = season.episodeCount;
+          const fullEpisodeImages = [];
+          var firstTime = true;
+          episodeImages.forEach(function(image) {
+            if (!firstTime) {
+              fullEpisodeImages.push("https://image.tmdb.org/t/p/w500" + image);
+            } else {
+              firstTime = false;
+            }
+          });
+          guestStars.forEach(function(guest) {
+            guest.profilePath = (guest.profilePath.length <= 5) ? "" : "https://image.tmdb.org/t/p/w300" + guest.profilePath;
+          });
+          episodeNumber++;
+
+          res.render("episodePage", {
+            name: encodeURI(tvShowName),
+            episodeName: episodeName,
+            seasonNumber: seasonNumber,
+            episodeNumber: episodeNumber,
+            posterPath: posterPath,
+            airDate: episode.airDate,
+            overview: overview,
+            episodeImages: fullEpisodeImages,
+            guestStars: guestStars,
+            numOfEpisodes:numOfEpisodes,
+            overviewHE:overviewHE
+          });
+        }).catch((err) => {
+          res.status(400).send(err);
+        });
     }).catch((err) => {
       res.status(400).send(err);
     });
+
+
+
 });
 
 
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, function() {
   console.log("Server started Successfully");
 });

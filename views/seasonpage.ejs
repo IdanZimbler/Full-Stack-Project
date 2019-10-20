@@ -1,35 +1,42 @@
 <%- include("header") -%>
 
 <section class="banner center first-cover" id="top" ">
-  <div class="container ">
+  <div class=" container ">
     <div class=" row ">
       <div class=" col-md-4">
-    <img class="card-image" src="<%=posterPath%>" alt="Season Poster">
+  <img class="card-image" src="<%=posterPath%>" alt="Season Poster">
   </div>
   <div class="col-md-8">
     <div class="card">
       <div class="card-text">
-        <h1><a href="/TVShows/<%=name%>"><%=name%></a></h1>
+        <h1><a href="/TVShows/<%=name%>"><%=decodeURI(name)%></a></h1>
         <h2><%=seasonName%></h2>
       </div>
-      <div class="dropdown center">
-        <button class="dropbtn  center">Episodes</button>
-        <div class="dropdown-content ">
-          <%  for (var i = 0; i < numOfEpisodes; i++) {%>
-          <a class = "onclick-effect" href="/TVShows/<%=name%>/<%=seasonNumber%>/<%=i+1%>">Episode <%=i+1%></a>
-          <%} %>
-        </div>
-      </div>
-      <div class = "navigation-btn">
-        <%if(seasonNumber+1 <= numOfSeasons){%>
-        <a class="onclick-effect to-right" href="/TVShows/<%=name%>/<%=seasonNumber+1%>">
-          Season <%=seasonNumber+1%> <i class="arrow right"></i>
-        </a>
-        <%}%>
+      <div class="row navigation-btn">
         <%if(seasonNumber-1 > 0){%>
-        <a class="onclick-effect to-left" href="/TVShows/<%=name%>/<%=seasonNumber-1%>">
-          <i class="arrow left"></i> Season <%=seasonNumber-1%>
-        </a>
+          <div class="col-md-6 col-sm-6 col-xs-6 onclick-effect to-left" onclick=location.href="/TVShows/<%=name%>/<%=seasonNumber-1%>">
+            <i class="arrow left"></i> Season <%=seasonNumber-1%>
+          </div>
+          <%}else{%>
+            <div class="col-md-6 col-sm-6 col-xs-6 onclick-effect to-left">
+              -
+            </div>
+            <%}%>
+        <%if(seasonNumber+1 <= numOfSeasons){%>
+          <div class="col-md-6 col-sm-6 col-xs-6 onclick-effect to-right" onclick=location.href="/TVShows/<%=name%>/<%=seasonNumber+1%>">
+            Season <%=seasonNumber+1%> <i class="arrow right"></i>
+          </div>
+          <%}else{%>
+            <div class="col-md-6 col-sm-6 col-xs-6 onclick-effect to-left">
+              -
+            </div>
+            <%}%>
+      </div>
+      <div class=" row">
+        <% for (var i = 0; i < numOfEpisodes; i++) {%>
+        <div class=" col-md-3 row-fill onclick-effect" onclick=location.href="/TVShows/<%=name%>/<%=seasonNumber%>/<%=i+1%>">
+          Episode <%=i+1%>
+        </div>
         <%}%>
       </div>
     </div>
@@ -38,3 +45,12 @@
   </div>
 </section>
 <%- include("footer") -%>
+
+          <!-- <div class="dropdown center">
+  <button class="dropbtn  center">Episodes</button>
+  <div class="dropdown-content ">
+    <%  for (var i = 0; i < numOfEpisodes; i++) {%>
+    <a class = "onclick-effect" href="/TVShows/<%=name%>/<%=seasonNumber%>/<%=i+1%>">Episode <%=i+1%></a>
+    <%} %>
+  </div>
+</div> -->

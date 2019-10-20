@@ -12,22 +12,31 @@
         <p class="p-airDate">Air date: <%=airDate%></p>
         <h1><%=episodeName%></h1>
         <h6>
-          <a href="/TVShows/<%=name%>"><%=name%></a>
+          <a href="/TVShows/<%=name%>"><%=decodeURI(name)%></a>
           -
           <a href="/TVShows/<%=name%>/<%=seasonNumber%>">Season <%=seasonNumber%></a>
           - Episode <%=episodeNumber%>
         </h6>
+        <h6 style="margin-top:20px;">Summary:</h6>
         <p class="p-episode"><%=overview%></p>
+        <div class=" col-md-3 row-fill onclick-effect translate-btn"
+        data-toggle="modal" data-target="#translateModal"">
+        Hebrew Summary
+        </div>
         <div class = "navigation-btn">
           <%if(episodeNumber+1 <= numOfEpisodes){%>
-          <a class="onclick-effect to-right" href="/TVShows/<%=name%>/<%=seasonNumber%>/<%=episodeNumber+1%>">
+          <div class=" col-md-3 row-fill onclick-effect to-right" onclick=location.href="/TVShows/<%=name%>/<%=seasonNumber%>/<%=episodeNumber+1%>">
+          Episode <%=episodeNumber+1%> <i class="arrow right"></i>
+          </div>
+          <!-- <a class="onclick-effect to-right" href="/TVShows/<%=name%>/<%=seasonNumber%>/<%=episodeNumber+1%>">
             Episode <%=episodeNumber+1%> <i class="arrow right"></i>
-          </a>
+          </a> -->
           <%}%>
           <%if(episodeNumber-1 > 0){%>
-          <a class="onclick-effect to-left" href="/TVShows/<%=name%>/<%=seasonNumber%>/<%=episodeNumber-1%>">
+            <div class=" col-md-3 row-fill onclick-effect to-left" onclick=location.href="/TVShows/<%=name%>/<%=seasonNumber%>/<%=episodeNumber-1%>">
             <i class="arrow left"></i> Episode <%=episodeNumber-1%>
-          </a>
+            </div>
+
           <%}%>
         </div>
       </div>
@@ -80,5 +89,24 @@
   </div>
 </section>
 <%}%>
+
+<!-- Modal -->
+<div class="modal fade" id="translateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content card" ">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">סיכום הפרק</h5>
+
+      </div>
+      <div class="modal-body">
+        <%=overviewHE%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">סגור</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <%- include("footer") -%>

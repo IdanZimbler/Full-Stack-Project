@@ -9,16 +9,15 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-text">
-        <h1><%=name%></h1>
+        <h1><%=decodeURI(name)%></h1>
         <p><%=overview%></p>
       </div>
-      <div class="dropdown center">
-        <button class="dropbtn  center">Seasons</button>
-        <div class="dropdown-content ">
-          <%  for (var i = 1; i < numOfSeasons; i++) {%>
-          <a class="onclick-effect" href="/TVShows/<%=name%>/<%=i%>">Season <%=i%></a>
-          <%} %>
-        </div>
+      <div class=" row">
+        <%  for (var i = 1; i < numOfSeasons; i++) {%>
+          <div class=" col-md-3 row-fill onclick-effect" onclick=location.href="/TVShows/<%=name%>/<%=i%>">
+            Season <%=i%>
+          </div>
+        <%} %>
       </div>
     </div>
   </div>
@@ -26,6 +25,13 @@
   </div>
 </section>
 
-
+<!-- <div class="dropdown center">
+  <button class="dropbtn  center">Seasons</button>
+  <div class="dropdown-content ">
+    <%  for (var i = 1; i < numOfSeasons; i++) {%>
+    <a class="onclick-effect" href="/TVShows/<%=name%>/<%=i%>">Season <%=i%></a>
+    <%} %>
+  </div>
+</div> -->
 
 <%- include("footer") -%>

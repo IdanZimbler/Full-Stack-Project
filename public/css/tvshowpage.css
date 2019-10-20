@@ -12,6 +12,7 @@ body {
 }
 
 .col-md-8 .card {
+  width:90%;
   background-color: #020f1d73;
   grid-template-columns: 300px;
   grid-template-rows: 210px 210px 80px;
@@ -25,7 +26,7 @@ body {
   transition: 0.5s ease;
   cursor: pointer;
   margin: 0 auto;
-  height:500px;
+  display: inline-block;
 }
 
 .my-btn{
@@ -47,21 +48,50 @@ body {
 }
 
 @media screen and (max-width: 772px) {
-    .card-image {
-         height: 300px;
-         width:auto;
+
+    .col-md-8 .card .row{
+      padding:0;
     }
-    .col-md-8 .card{
-      height:250px;
+
+    .first-cover .col-md-8{
+      margin-top:-80px;
+    }
+    .card-image {
+         height: auto;
+         width:300px;
     }
     .container .row{
       display: block;
+
+    }
+
+    .ourservices-container .row{
+      width:100%;
+    }
+
+    #project{
+      width:100%;
+      padding-left: 0;
+      padding-right:0;
+    }
+
+    .card .card-text p {
+      margin: 30px 0;
+    }
+
+    .col-md-8 .card:hover {
+      transform: scale(1);
+    }
+    .card .card-text h2 {
+    font-size:20px;
     }
 }
 
 .card-text h1{
   border-bottom: 2px solid #213868;
-  font-weight: 900;
+  font-weight: 600;
+  word-break: keep-all;
+  font-family: Montserrat;
 }
 
 h1 a{
@@ -81,7 +111,7 @@ h1 a{
   color: white;
   font-size:15px;
   font-weight: 300;
-  margin:30px;
+  margin:30px 30px 10px;
   letter-spacing: 0.5px;
 }
 .card-text h2 {
@@ -140,7 +170,6 @@ h1 a{
 
 /* Style The Dropdown Button */
 .dropbtn {
-  width: 50%;
   color:white;
   background-color: #071b3073;
   padding: 16px;
@@ -157,7 +186,7 @@ h1 a{
   position: relative;
   display: inline-block;
 
-  width: 45%;
+  width: 100%;
     border-radius: 100px;
 }
 
@@ -165,17 +194,13 @@ h1 a{
 .dropdown-content {
   overflow:auto;
   display: none;
-
-  min-width: 160px;
+  min-height: 200px;
   color:white;
   z-index: 1;
-
-  columns: 2;
-  height: -webkit-fill-available;
+  columns: 3;
 }
 
 .onclick-effect{
-  position: relative;
   transition-duration: 0.1s;
   text-decoration: none;
   overflow: hidden;
@@ -187,7 +212,7 @@ h1 a{
 }
 
 .onclick-effect:after {
-  content: "";
+  content:'';
   background: white;
   display: block;
   position: absolute;
@@ -206,31 +231,32 @@ h1 a{
   transition: 0s
 }
 
+
 /* Links inside the dropdown */
-.dropdown-content a {
+.card .col-sm-3, .card .col-md-3 {
   color:white;
-  padding: 2px 2px;
+  padding: 8px 2px;
   text-decoration: none;
-  display: block;
   border-radius:50px;
+  border-bottom: 2px solid #213868;
+  width:50%;
 
-  border-bottom: 1px solid #213868;
+}
 
+.row-fill{
+  color:white;
+  z-index: 1;
+}
+
+.card .row{
+  display:flex;
+  bottom: 0px;
+  padding: 20px 60px;
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {
+.card .col-md-3:hover , .card .col-sm-3:hover{
   background-color: #001a33;
-  border-bottom: 1px solid white;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-  background-color: #213868;
-  border-bottom: 5px solid white;
+  border-bottom: 2px solid white;
+  color:white;
 }

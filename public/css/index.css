@@ -1,16 +1,17 @@
 .first-cover {
   background-image: url(../img/image.jpg);
   background-size: cover;
-  padding-bottom: 700px;
+  padding-bottom: 500px;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .second-cover {
-  background-image: url(../img/image.jpg);
+  background-image: url(../img/second-cover.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  padding-bottom: 100px; 
 }
 
 body{
@@ -80,6 +81,22 @@ li {
   margin: 0 auto;
 }
 
+@media screen and (max-width:1017px){
+  .banner .submit-form {
+    width: 90%;
+  }
+
+  .banner .banner-caption h2 {
+    font-size: 25px;
+  }
+
+  .banner .banner-caption h3 {
+    font-size: 17px;
+  }
+
+
+}
+
 .dark-background-search {
   opacity: 0.6;
   background: linear-gradient(rgba(0, 0, 0, 0.7),
@@ -92,7 +109,7 @@ li {
       rgba(0, 0, 0, 0.9));
 }
 
-.banner .banner-caption h2 {
+.banner-caption h2 {
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 35px;
@@ -102,7 +119,7 @@ li {
   font-weight: 600;
 }
 
-.banner .banner-caption h3 {
+.banner-caption h3 {
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 22px;
@@ -170,7 +187,6 @@ section {
 
 
 .center {
-  display: block;
   text-align: center;
   margin-left: auto;
   margin-right: auto;

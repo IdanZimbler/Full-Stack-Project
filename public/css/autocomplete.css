@@ -33,11 +33,15 @@ input[type=submit] {
   top: 100%;
   left: 0;
   right: 0;
-
-
   border-radius: 100px;
   width: 30%;
   margin: 0 auto;
+}
+
+@media screen and (max-width:1017px){
+  .autocomplete-items{
+    width: 90%;
+  }
 }
 
 .autocomplete-items div {
