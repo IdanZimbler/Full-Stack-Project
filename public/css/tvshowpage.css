@@ -11,8 +11,8 @@ body {
   margin-top:70px;
 }
 
-.col-md-8 .card {
-  width:90%;
+.col-md-8 .card ,.card{
+  width:100%;
   background-color: #020f1d73;
   grid-template-columns: 300px;
   grid-template-rows: 210px 210px 80px;
@@ -52,6 +52,8 @@ body {
     .col-md-8 .card .row{
       padding:0;
     }
+
+
 
     .first-cover .col-md-8{
       margin-top:-80px;
@@ -233,7 +235,7 @@ h1 a{
 
 
 /* Links inside the dropdown */
-.card .col-sm-3, .card .col-md-3 {
+.card .col-sm-3, .card .col-md-3, .hide-btn{
   color:white;
   padding: 8px 2px;
   text-decoration: none;
@@ -255,7 +257,7 @@ h1 a{
 }
 
 /* Change color of dropdown links on hover */
-.card .col-md-3:hover , .card .col-sm-3:hover{
+.card .col-md-3:hover , .card .col-sm-3:hover, .hide-btn:hover{
   background-color: #001a33;
   border-bottom: 2px solid white;
   color:white;

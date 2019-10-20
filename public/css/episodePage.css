@@ -39,6 +39,11 @@ h6 a{
     font-weight: bold;
     font-family:Montserrat;
     padding-top:50px;
+    border-bottom: 2px solid #213868;
+border-radius: 30px;
+width: 60%;
+margin-left: auto;
+margin-right: auto;
 }
 
 .gallery-block.compact-gallery .item{
@@ -88,15 +93,33 @@ background-color: #0000005c;
   margin-top: 10px;
   font-weight: 300;
 }
-
+@media (min-width: 500px){
+  .container {
+    max-width: 1200px;
+  }
+}
 @media screen and (max-width: 772px) {
+  .heading h4{
+    font-size: 0.8rem;
+  }
+  .heading h2{
+    font-size: 0.8rem;
+    border-radius: 20px;
+    width: 50%;
+  }
+  .no-gutters .guest-item{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
 
   h6{
     font-size:0.9rem;
   }
 
   .card-text h1{
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
   .card-text p{
     font-size:13px;
@@ -195,7 +218,7 @@ margin:3px;
 font-size:11px;
 }
 
-.card-text .translate-btn{
+.hide-btn, .card-text .hide-btn{
   border-bottom: 2px solid #212529;
   color:lightslategrey;
   font-size: 0.7rem;
@@ -237,4 +260,9 @@ top: 250px;
 margin-left: auto;
 margin-right: auto;
 
+}
+
+.more-photos-btn{
+  text-align: center;
+  width:50%;
 }

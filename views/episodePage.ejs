@@ -1,69 +1,73 @@
 <%- include("header") -%>
 
 <section class="banner first-cover" id="top" style="padding-bottom:0;">
-  <div class="container " >
+  <div class="container ">
     <div class=" row ">
       <div class=" col-md-4">
-    <img class="card-image episode-image lozad" data-src="<%=posterPath%>" src = "/img/blank.png" alt="Episode Poster">
-  </div>
-  <div class="col-md-8">
-    <div class="card episode-card">
-      <div class="card-text">
-        <p class="p-airDate">Air date: <%=airDate%></p>
-        <h1><%=episodeName%></h1>
-        <h6>
-          <a href="/TVShows/<%=name%>"><%=decodeURI(name)%></a>
-          -
-          <a href="/TVShows/<%=name%>/<%=seasonNumber%>">Season <%=seasonNumber%></a>
-          - Episode <%=episodeNumber%>
-        </h6>
-        <h6 style="margin-top:20px;">Summary:</h6>
-        <p class="p-episode"><%=overview%></p>
-        <div class=" col-md-3 row-fill onclick-effect translate-btn"
-        data-toggle="modal" data-target="#translateModal"">
+        <img class="card-image episode-image lozad" data-src="<%=posterPath%>" src="/img/blank.png" alt="Episode Poster">
+      </div>
+      <div class="col-md-8">
+        <div class="card episode-card">
+          <div class="card-text">
+            <p class="p-airDate">Air date: <%=airDate%></p>
+            <h1><%=episodeName%></h1>
+            <h6>
+              <a href="/TVShows/<%=name%>"><%=decodeURI(name)%></a>
+              -
+              <a href="/TVShows/<%=name%>/<%=seasonNumber%>">Season <%=seasonNumber%></a>
+              - Episode <%=episodeNumber%>
+            </h6>
+            <h6 style="margin-top:20px;">Summary:</h6>
+            <p class="p-episode"><%=overview%></p>
+            <div class=" col-md-3 row-fill onclick-effect hide-btn" data-toggle="modal" data-target="#translateModal"">
         Hebrew Summary
         </div>
-        <div class = "navigation-btn">
-          <%if(episodeNumber+1 <= numOfEpisodes){%>
-          <div class=" col-md-3 row-fill onclick-effect to-right" onclick=location.href="/TVShows/<%=name%>/<%=seasonNumber%>/<%=episodeNumber+1%>">
-          Episode <%=episodeNumber+1%> <i class="arrow right"></i>
-          </div>
-          <!-- <a class="onclick-effect to-right" href="/TVShows/<%=name%>/<%=seasonNumber%>/<%=episodeNumber+1%>">
+        <div class = " navigation-btn">
+              <%if(episodeNumber+1 <= numOfEpisodes){%>
+              <div class=" col-md-3 row-fill onclick-effect to-right" onclick=location.href="/TVShows/<%=name%>/<%=seasonNumber%>/<%=episodeNumber+1%>">
+                Episode <%=episodeNumber+1%> <i class="arrow right"></i>
+              </div>
+              <!-- <a class="onclick-effect to-right" href="/TVShows/<%=name%>/<%=seasonNumber%>/<%=episodeNumber+1%>">
             Episode <%=episodeNumber+1%> <i class="arrow right"></i>
           </a> -->
-          <%}%>
+              <%}%>
           <%if(episodeNumber-1 > 0){%>
-            <div class=" col-md-3 row-fill onclick-effect to-left" onclick=location.href="/TVShows/<%=name%>/<%=seasonNumber%>/<%=episodeNumber-1%>">
-            <i class="arrow left"></i> Episode <%=episodeNumber-1%>
-            </div>
+              <div class=" col-md-3 row-fill onclick-effect to-left" onclick=location.href="/TVShows/<%=name%>/<%=seasonNumber%>/<%=episodeNumber-1%>">
+                <i class="arrow left"></i> Episode <%=episodeNumber-1%>
+              </div>
 
-          <%}%>
+              <%}%>
         </div>
       </div>
 
     </div>
   </div>
   </div>
-  <section class="gallery-block compact-gallery">
+  <section class="gallery-block compact-gallery episode-photos">
     <div class="container">
       <div class="heading">
         <h2>Episode Photos</h2>
         <%if(episodeImages.length==0){%>
-        <h4 style="margin-top:30px;">No photos for this episode yet</h4>
-        <%}%>
+              <h4 style="margin-top:30px;">No photos for this episode yet</h4>
+              <%}%>
       </div>
       <div class="row no-gutters">
         <%episodeImages.forEach(function(image){%>
-        <div class="col-md-6 col-lg-4 item zoom-on-hover">
-          <a class="lightbox" href="<%=image%>">
-            <img class="img-fluid image lozad" data-src="<%=image%>" src = "/img/blank.png">
-          </a>
-        </div>
-        <%})%>
-      </div>
-    </div>
-  </section>
-  </div>
+              <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                <a class="lightbox" href="<%=image%>">
+                  <img class="img-fluid image lozad" data-src="<%=image%>" src="/img/blank.png">
+                </a>
+              </div>
+              <%})%>
+            </div>
+          </div>
+
+          <div  class=" col-md-2 row-fill onclick-effect hide-btn more-photos-btn" onclick="window.open('<%=morePhotosURL%>', '_blank')" >
+            <span>More Photos</span>
+          </div>
+
+</section>
+</div>
 </section>
 <%if(guestStars.length>0){%>
 <section class="gallery-block compact-gallery second-cover">
@@ -74,9 +78,9 @@
     <div class="row no-gutters">
       <%guestStars.forEach(function(guest){%>
       <%if(guest.profilePath.length > 4){%>
-      <div class="col-md-2 item zoom-on-hover">
+      <div class="col-md-2 item zoom-on-hover guest-item">
         <a class="lightbox" href="<%=guest.profilePath%>">
-          <img class="img-fluid image lozad" data-src="<%=guest.profilePath%>"src = "/img/blank.png">
+          <img class="img-fluid image lozad" data-src="<%=guest.profilePath%>" src="/img/blank.png">
           <span class="description">
             <span class="description-heading">Name - <%=guest.name%></span>
             <span class="description-body">Character - <%=guest.character%></span>
@@ -100,12 +104,12 @@
       </div>
       <div class="modal-body">
         <%=overviewHE%>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">סגור</button>
-      </div>
-    </div>
-  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">סגור</button>
+</div>
+</div>
+</div>
 </div>
 
 
