@@ -379,8 +379,10 @@ app.get("/TVShows/:TVShowName/:seasonNumber", (req, res) => {
 function episodefunc(tvShowName, seasonNumber, episodeNumber, overviewHE, res) {
   const episodeNumberPlusOne = episodeNumber + 1;
   const tvShowNameWithoutAmp = tvShowName.replace("&", "");
-  const morePhotosURL = "https://www.google.com/search?q=" + tvShowNameWithoutAmp + " Season " + seasonNumber + " Episode " + episodeNumberPlusOne + "&tbm=isch";
 
+  const morePhotosURL = "https://www.google.com/search?q=" + tvShowNameWithoutAmp + " Season " + seasonNumber + " Episode " + episodeNumberPlusOne + "&tbm=isch";
+  const encodedMorePhotosURL = encodeURI(morePhotosURL);
+  const encodedMorePhotosURLWithoutQuot = encodedMorePhotosURL.replace(/'/g, "%27");
   TVShow.findOne({
       name: tvShowName
     })
@@ -424,7 +426,7 @@ function episodefunc(tvShowName, seasonNumber, episodeNumber, overviewHE, res) {
         guestStars: guestStars,
         numOfEpisodes: numOfEpisodes,
         overviewHE: overviewHE,
-        morePhotosURL: encodeURI(morePhotosURL)
+        morePhotosURL: encodedMorePhotosURLWithoutQuot
       });
     }).catch((err) => {
       res.status(400).send(err);
