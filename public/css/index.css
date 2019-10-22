@@ -11,7 +11,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding-bottom: 100px; 
+  padding-bottom: 100px;
 }
 
 body{
@@ -92,6 +92,40 @@ li {
 
   .banner .banner-caption h3 {
     font-size: 17px;
+  }
+
+}
+
+@media screen and (max-width: 772px){
+
+  footer .container{
+    text-align: center;
+    margin: 0;
+  }
+
+  footer .social-icons{
+    padding:0;
+    margin:0;
+  }
+
+  footer .footer-heading h4{
+    margin-top:40px!important;
+  }
+
+  .fa-facebook{
+    color:white;
+  }
+
+  footer .about-veno ul li a.facebook-icon{
+    background-color:#4267b2;
+  }
+
+  footer .about-veno ul li a.linkedin-icon{
+    background-color:#0077b5;
+  }
+
+  footer .about-veno ul li a.github-icon{
+    background-color:#000000b3;
   }
 
 
@@ -303,7 +337,7 @@ footer .footer-heading h4 {
   color: #232323;
   letter-spacing: 0.5px;
   margin-top: 15px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .contact-info ul{
@@ -314,6 +348,7 @@ footer .footer-heading h4 {
 footer .about-veno .logo {
   margin-bottom: 40px;
   display:flex;
+  cursor: context-menu;
 }
 
 footer .about-veno ul li a {
@@ -348,7 +383,7 @@ footer .useful-links ul {
 display: grid;
 }
 
-footer .useful-links ul li a {
+footer .useful-links ul li a , .android-version {
   font-size: 15px;
   color: #7a7a7a;
   letter-spacing: 0.5px;
@@ -435,4 +470,13 @@ h4 span{
 
 .row .col-md-6{
   padding:0;
+}
+
+.android-version{
+  white-space: nowrap;
+  margin-left: 10px;
+  border-bottom: 1px solid green;
+  padding: 5px;
+  border-radius: 10px;
+  text-decoration: none!important;
 }

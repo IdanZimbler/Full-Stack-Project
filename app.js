@@ -376,13 +376,12 @@ app.get("/TVShows/:TVShowName/:seasonNumber", (req, res) => {
   // });
 });
 
-function episodefunc(tvShowName, seasonNumber, episodeNumber, overviewHE, res) {
-  const episodeNumberPlusOne = episodeNumber + 1;
-  const tvShowNameWithoutAmp = tvShowName.replace("&", "");
+function loadZero(n) {
+    return (n < 10) ? '0' + n.toString() : n.toString();
+}
 
-  const morePhotosURL = "https://www.google.com/search?q=" + tvShowNameWithoutAmp + " Season " + seasonNumber + " Episode " + episodeNumberPlusOne + "&tbm=isch";
-  const encodedMorePhotosURL = encodeURI(morePhotosURL);
-  const encodedMorePhotosURLWithoutQuot = encodedMorePhotosURL.replace(/'/g, "%27");
+function episodefunc(tvShowName, seasonNumber, episodeNumber, overviewHE, res) {
+
   TVShow.findOne({
       name: tvShowName
     })
@@ -393,6 +392,14 @@ function episodefunc(tvShowName, seasonNumber, episodeNumber, overviewHE, res) {
       const season = foundTVShow.seasons[seasonNumber];
       const episode = season.episodes[episodeNumber];
       const episodeName = episode.name;
+
+      const episodeNumberPlusOne = episodeNumber + 1;
+      const tvShowNameWithoutAmp = tvShowName.replace("&", "");
+      const morePhotosURL = "https://www.google.com/search?q=" +
+       tvShowNameWithoutAmp + " S" + loadZero(seasonNumber) + "E" + loadZero(episodeNumberPlusOne) +" "+ episodeName + "&tbm=isch";
+      const encodedMorePhotosURL = encodeURI(morePhotosURL);
+      const encodedMorePhotosURLWithoutQuot = encodedMorePhotosURL.replace(/'/g, "%27");
+
       const posterPath = (episode.stillPath.length <= 5) ? "/img/coming-soon.png" : "https://image.tmdb.org/t/p/w500" + episode.stillPath;
       const overview = (episode.overview.length <= 5) ? "No overview for this episode yet" : episode.overview;
       const episodeImages = episode.episodeImages;
